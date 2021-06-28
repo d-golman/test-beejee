@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Footer from './footer/footer';
 import Navbar from './navbar/navbar';
 import LoginPage from './pages/loginPage/loginPage';
@@ -13,6 +13,7 @@ const App: React.FC = () => {
       <Switch>
         <Route path='/' exact component={MainPage} />
         <Route path='/login' exact component={LoginPage} />
+        <Route path='*' exact component={() => <Redirect to='/' />} />
       </Switch>
       <Footer />
     </BrowserRouter>
