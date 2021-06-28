@@ -1,0 +1,45 @@
+body
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    #root
+      min-height: 100vh
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+.container
+    max-width: 1400px
+    margin: auto
+
+.post-form
+    padding: 10px
+    max-width: 300px
+    .form-group
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      padding: 10px 0
+      input
+        width: 100%
+        padding: 5px
+        border: none
+        border-radius: 5px
+        font-size: 1.2rem
+        background-color: rgba(0, 0, 0, 0.05)
+    .form-submit
+        display: block
+        border: none
+        border-radius: 5px
+        background: #e74c3c
+        color: white
+        padding: 10px
+        width: 100%
+        margin-top: 10px
+        font-size: 1rem
+        &:hover
+            cursor: pointer

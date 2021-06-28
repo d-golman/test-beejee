@@ -1,4 +1,3 @@
-import { Reducer } from "react";
 import { tasksActionsEnum, tasksActionType, tasksStateType } from "../../types/types";
 
 const initialState: tasksStateType = {

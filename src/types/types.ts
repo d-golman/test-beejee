@@ -33,8 +33,8 @@ interface fetchTasksError {
 
 export type tasksActionType = fetchTasks | fetchTasksSucces | fetchTasksError;
 
-export type sort_fieldType = 'id' | 'username' | 'email' | 'status';
-export type sort_directionType = 'asc' | 'desc';
+export type sort_fieldType = 'id' | 'username' | 'email' | 'status' | string;
+export type sort_directionType = 'asc' | 'desc' | string;
 
 export type todoListType = {
   page: number,
@@ -62,3 +62,18 @@ interface changeDirection {
 }
 
 export type todoListActionType = changePage | changeSort | changeDirection;
+
+export type userStateType = {
+  logged: boolean;
+};
+
+export enum userEnum {
+  CHANGE_LOGIN = 'CHANGE_LOGIN'
+}
+
+interface changeLogin {
+  type: userEnum.CHANGE_LOGIN,
+  payload: boolean;
+}
+
+export type userActionType = changeLogin;
