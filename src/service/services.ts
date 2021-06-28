@@ -2,7 +2,7 @@ import { sort_directionType, sort_fieldType } from "../types/types";
 import { deleteCookie, getCookie, setCookie } from "./cookie";
 
 const API_URL = "https://uxcandy.com/~shapoval/test-task-backend/v2/";
-const developer = '421421';
+const developer = 'GolmanD';
 
 export const fetchTasks = async (page: number, sort_field: sort_fieldType, sort_direction: sort_directionType) => {
   return await fetch(`${API_URL}?developer=${developer}&page=${page}&sort_direction=${sort_direction}&sort_field=${sort_field}`)
