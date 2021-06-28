@@ -2,7 +2,7 @@ import { todoListActionType, todoListEnum, todoListType } from "../../types/type
 
 const initialState: todoListType = {
   page: 1,
-  sort_field: 'username',
+  sort_field: 'id',
   sort_direction: 'asc'
 };
 

@@ -26,6 +26,7 @@ const TodoList: React.FC = () => {
         <div className="select-group">
           <label htmlFor="select-sort-field">Поле сортировки</label>
           <select onChange={handleSortFieldChange} name="select-sort-field" id="select-sort-field">
+            <option value="id">Дата</option>
             <option value="username">Имя</option>
             <option value="email">Email</option>
             <option value="status">Статус</option>
@@ -69,21 +70,21 @@ const Tasks: React.FC = () => {
     switch (status) {
       case 0:
         return <div className="status">
-          <span>Задача не выполнена</span>
+          <p>Задача не выполнена</p>
         </div>;
       case 10:
         return <div className="status">
-          <span>Задача выполнена</span>
+          <p>Задача выполнена</p>
         </div>;
       case 1:
         return <div className="status">
-          <span>Задача не выполнена</span>
-          <span>Задача отредактирована администратором</span>
+          <p>Задача не выполнена</p>
+          <p>Задача отредактирована администратором</p>
         </div>;
       case 11:
         return <div className="status">
-          <span>Задача выполнена</span>
-          <span>Задача отредактирована администратором</span>
+          <p>Задача выполнена</p>
+          <p>Задача отредактирована администратором</p>
         </div>;
       default:
         return <></>;
@@ -106,11 +107,16 @@ const Tasks: React.FC = () => {
         oldStatus: status
       };
       editTask(editData)
-        .then(editStatus => {
-          setEditStatus(editStatus);
-          setTimeout(() => {
-            setEditStatus(null);
-          }, 2000);
+        .then(async editStatus => {
+          if (editStatus) {
+            setEditStatus(editStatus);
+            setTimeout(() => {
+              setEditStatus(null);
+            }, 2000);
+          }
+          else {
+            dispatch(fetchTasksAction(page, sort_field, sort_direction));
+          }
         });
     };
 
@@ -135,9 +141,11 @@ const Tasks: React.FC = () => {
   return (
     <div >
       <div className="tasks">
-        {tasks.map((task: taskType) => {
+        {tasks.length > 0 ? tasks.map((task: taskType) => {
           return <Task task={task} />;
-        })}
+        })
+          :
+          <h2>Задач пока нет</h2>}
       </div>
       <div className="pages">
         <button disabled={page <= 1} onClick={() => handlePageChange('dec')}>&lt;</button>

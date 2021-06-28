@@ -2,7 +2,7 @@ import { sort_directionType, sort_fieldType } from "../types/types";
 import { deleteCookie, getCookie, setCookie } from "./cookie";
 
 const API_URL = "https://uxcandy.com/~shapoval/test-task-backend/v2/";
-const developer = 'Test';
+const developer = '421421';
 
 export const fetchTasks = async (page: number, sort_field: sort_fieldType, sort_direction: sort_directionType) => {
   return await fetch(`${API_URL}?developer=${developer}&page=${page}&sort_direction=${sort_direction}&sort_field=${sort_field}`)
@@ -74,10 +74,10 @@ export const editTask = async (editData: editDataType) => {
     .then(response => response.json())
     .then(response => {
       if (response['status'] === 'ok') {
-        return ('Задача изменена');
+        return null;
       }
       else {
-        return ('Что-то пошло не так');
+        return ('Ошибка доступа, войдите в систему');
       }
     });
 
